@@ -1,0 +1,16 @@
+{
+  "name": "jws-tool-rsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jws": "^3.1.5",
+    "node-rsa": "^1.0.1",
+    "x509": "^0.3.3"
+  }
+}
