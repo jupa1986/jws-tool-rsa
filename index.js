@@ -16,7 +16,11 @@ const _x5c_to_cert = (x5c) => {
 }
 
 const validarSimple = (jwsSigned) => {
-  const parsedKey = recuperarCertificados(jwsSigned)[0];
+  const certificadosLista = recuperarCertificados(jwsSigned);
+  if (!certificadosLista){
+    return false;
+  }
+  const parsedKey = certificadosLista[0];
   const key = new NodeRSA();
   key.importKey({
     n: new Buffer(parsedKey.publicKey.n, 'hex'),
@@ -27,6 +31,9 @@ const validarSimple = (jwsSigned) => {
 }
 const recuperarCertificados = (jwsSigned) => {
   const jwsDecoded = jws.decode(jwsSigned);
+  if(!jwsDecoded){
+    return null;
+  }
   const certificados = jwsDecoded.header.x5c;
   return certificados.map(x => {
     return x509.parseCert(_x5c_to_cert(x));
@@ -34,7 +41,11 @@ const recuperarCertificados = (jwsSigned) => {
 
 }
 const recuperarCertificadosSubject = (jwsSigned) => {
-  return recuperarCertificados(jwsSigned).map(x => x.subject);
+  var listaCertificados = recuperarCertificados(jwsSigned);
+  if (!listaCertificados){
+    return 'no existe certificado'
+  }
+  return listaCertificados.map(x => x.subject);
 }
 
 const toJson = (jwsSigned) => {
