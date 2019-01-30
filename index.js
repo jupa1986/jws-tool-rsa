@@ -12,7 +12,7 @@ const _x5c_to_cert = (x5c) => {
     }
     return _results;
   })()).join('\n');
-  return ("-----BEGIN CERTIFICATE-----\n" + cert + "\n-----END CERTIFICATE-----");
+  return ("-----BEGIN CERTIFICATE-----\n" + cert.trim() + "\n-----END CERTIFICATE-----");
 }
 
 const validarSimple = (jwsSigned) => {

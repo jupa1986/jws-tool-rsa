@@ -1,16 +1,25 @@
 {
   "name": "jws-tool-rsa",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "read jws with rsa signature",
   "main": "index.js",
   "scripts": {
     "test": "node ./test/test.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jupa1986/jws-tool-rsa.git"
+  },
+  "keywords": [
+    "node",
+    "rsa",
+    "jws"
+  ],
+  "author": "Juan Pablo Poma Chuquimia",
   "license": "ISC",
   "dependencies": {
     "jws": "^3.1.5",
     "node-rsa": "^1.0.1",
-    "x509": "^0.3.3"
+    "x509": "0.3.3"
   }
 }
