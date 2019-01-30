@@ -1,6 +1,6 @@
 {
   "name": "jws-tool-rsa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "read jws with rsa signature",
   "main": "index.js",
   "scripts": {
