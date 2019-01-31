@@ -1,5 +1,5 @@
 const jws = require('jws');
-const x509 = require('x509');
+const x509 = require('x509.js');
 const NodeRSA = require('node-rsa');
 
 const _x5c_to_cert = (x5c) => {
@@ -23,8 +23,9 @@ const validarSimple = (jwsSigned) => {
   const parsedKey = certificadosLista[0];
   const key = new NodeRSA();
   key.importKey({
-    n: new Buffer(parsedKey.publicKey.n, 'hex'),
-    e: parseInt(parsedKey.publicKey.e, 10)
+
+    n: new Buffer(parsedKey.publicModulus, 'hex'),
+    e: parseInt('65537', 10)
   }, 'components-public');
   const exportedKey = key.exportKey('public');
   return jws.verify(jwsSigned, 'RS256', exportedKey);
