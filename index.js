@@ -23,9 +23,8 @@ const validarSimple = (jwsSigned) => {
   const parsedKey = certificadosLista[0];
   const key = new NodeRSA();
   key.importKey({
-
     n: new Buffer(parsedKey.publicModulus, 'hex'),
-    e: parseInt('65537', 10)
+    e: parseInt(parseInt(parsedKey.publicExponent, 16))
   }, 'components-public');
   const exportedKey = key.exportKey('public');
   return jws.verify(jwsSigned, 'RS256', exportedKey);
